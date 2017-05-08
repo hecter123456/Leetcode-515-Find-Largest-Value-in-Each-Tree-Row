@@ -10,7 +10,7 @@ class TreeNode(object):
 class unitest(unittest.TestCase):
     def testNone(self):
         root = None
-        self.assertEqual(Solution().largestValues(root),None);
+        self.assertEqual(Solution().largestValues(root),[]);
     def testThirdLevelTree(self):
         root = TreeNode(2)
         root.left = TreeNode(1)
@@ -20,14 +20,13 @@ class unitest(unittest.TestCase):
         root.left.left = TreeNode(6)
         root.right.right = TreeNode(7)
         self.assertEqual(Solution().largestValues(root),[2,3,7]);
-
 class Solution(object):
     def largestValues(self, root):
-        if(root is None):
-            return None
+        ans = []
+        if root is None:
+            return ans
         q = [root]
         level = deque([0])
-        ans = []
         for node in q:
             num = level.popleft()
             if len(ans) == num:
